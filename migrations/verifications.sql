@@ -11,3 +11,7 @@ SELECT c.idCommande, SUM(p.prix * dc.quantite) as total FROM Commande as c
 JOIN DetailsCommande as dc ON c.idCommande = dc.idCommande
 JOIN Plat as p ON dc.idPlat = p.idPlat
 GROUP BY c.idCommande;
+
+-- Étape 4 : Liste des commandes avec le nom du client , "client de passage" raha tsy misy client
+SELECT c.idCommande, COALESCE(cl.nom, 'Client de passage') as client FROM Commande as c
+LEFT JOIN Client as cl ON c.idClient = cl.idClient;

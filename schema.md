@@ -2,7 +2,8 @@
 
 Categorie(__idCategorie__, libellé)
 Plat(__idPlat__, libellé, prix, #idCategorie)
-Commande(__idCommande__, date)
+Client(__idClient__, nom, prenom, numero)
+Commande(__idCommande__, date, #idClient)
 DetailsCommande(__idDetailCommande__, #idCommande, #idPlat, quantité)
 
 * Etape1
@@ -15,4 +16,8 @@ DetailsCommande(__idDetailCommande__, #idCommande, #idPlat, quantité)
 
 * Etape 3 
     - Quantité de plats d'une commande dans la table __DetailsCommande__
+
+* Etape 4 
+    - #idClient dans __Commande__ n'est pas NOT NULL car le client veut seulement connaitre l'identité des habitués
+    - Pour ne perdre aucune commande on utilise LEFT JOIN de Commande -> Client 
 
