@@ -15,3 +15,8 @@ GROUP BY c.idCommande;
 -- Étape 4 : Liste des commandes avec le nom du client , "client de passage" raha tsy misy client
 SELECT c.idCommande, COALESCE(cl.nom, 'Client de passage') as client FROM Commande as c
 LEFT JOIN Client as cl ON c.idClient = cl.idClient;
+
+-- Étape 5 : Serveur et table pour chaque commande, "à emporté" si pas de table
+SELECT c.idCommande, s.nom as serveur, COALESCE(st.libelle, 'À emporter') as nomtable FROM Commande as c
+LEFT JOIN Serveur as s ON c.idServeur = s.idServeur
+LEFT JOIN SalleTable as st ON c.idSalleTable = st.idSalleTable; 

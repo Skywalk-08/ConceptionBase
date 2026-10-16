@@ -3,7 +3,9 @@
 Categorie(__idCategorie__, libellé)
 Plat(__idPlat__, libellé, prix, #idCategorie)
 Client(__idClient__, nom, prenom, numero)
-Commande(__idCommande__, date, #idClient)
+Serveur(__idServeur__, nom, prenom)
+SalleTable(__idSalleTable__, libellé)
+Commande(__idCommande__, date, #idClient ?, #idServeur, #idSalleTable)
 DetailsCommande(__idDetailCommande__, #idCommande, #idPlat, quantité)
 
 * Etape1
@@ -21,3 +23,6 @@ DetailsCommande(__idDetailCommande__, #idCommande, #idPlat, quantité)
     - #idClient dans __Commande__ n'est pas NOT NULL car le client veut seulement connaitre l'identité des habitués
     - Pour ne perdre aucune commande on utilise LEFT JOIN de Commande -> Client 
 
+* Etape 5 
+    - Une commande c'est la liste de plat pris par les clients d'une table
+    - 'table' ne peut pas être un champ de table parce que en sql table designe une table 

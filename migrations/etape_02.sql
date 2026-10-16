@@ -11,7 +11,7 @@ INSERT INTO Categorie(libelle) VALUES
 ('Boisson'),
 ('Autres');
 
-ALTER TABLE Plat ADD COLUMN idCategorie INT NOT NULL,
+ALTER TABLE Plat ADD COLUMN idCategorie INT,
 ADD CONSTRAINT fk_plat_categorie FOREIGN KEY (idCategorie) REFERENCES Categorie(idCategorie);
 
 UPDATE Plat SET idCategorie = 1 WHERE idPlat = 1;
@@ -21,3 +21,5 @@ UPDATE Plat SET idCategorie = 2 WHERE idPlat = 4;
 UPDATE Plat SET idCategorie = 3 WHERE idPlat = 5;
 UPDATE Plat SET idCategorie = 4 WHERE idPlat = 6;
 UPDATE Plat SET idCategorie = 5 WHERE idPlat = 7;
+
+ALTER TABLE Plat ALTER COLUMN idCategorie SET NOT NULL;
